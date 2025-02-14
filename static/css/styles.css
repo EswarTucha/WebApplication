@@ -1,0 +1,49 @@
+.application-card {
+    border: 1px solid var(--bs-border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--bs-dark);
+}
+
+.application-card h3 {
+    color: var(--bs-primary);
+    margin-bottom: 1rem;
+}
+
+.application-card p {
+    margin-bottom: 0.5rem;
+}
+
+.delete-btn {
+    background-color: var(--bs-danger);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.delete-btn:hover {
+    background-color: var(--bs-danger-dark);
+}
+
+.applications-container {
+    margin-top: 2rem;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.text-success {
+    color: var(--bs-success) !important;
+}
+
+.text-danger {
+    color: var(--bs-danger) !important;
+}
