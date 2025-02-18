@@ -166,13 +166,16 @@ def submit():
                     <p>Result: {"Pass" if passed else "Fail"}</p>
                 </div>
                 <div class="qa-container">
-                    {''.join([f"""
-                        <div class="question-card">
-                            <div class="question">Question {q['id']}: {q['text']}</div>
-                            <div class="correct-answer">Correct Answer: {q['correct']}</div>
-                            <div class="user-answer">Your Answer: {stored_answers[q['id']]}</div>
-                        </div>
-                    """ for q in quiz_questions])}
+                     "".join(
+    [
+        '<div class="question-card">'
+        f'<div class="question">Question {q["id"]}: {q["text"]}</div>'
+        f'<div class="correct-answer">Correct Answer: {q["correct"]}</div>'
+        f'<div class="user-answer">Your Answer: {stored_answers.get(q["id"], "No answer provided")}</div>'
+        "</div>"
+        for q in quiz_questions
+    ]
+)
                 </div>
             </body>
             </html>
