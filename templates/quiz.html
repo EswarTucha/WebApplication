@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4">DevEx</h1>
+</div>
+
+<form action="{{ url_for('submit') }}" method="POST" id="quizForm">
+    <div class="card mb-4">
+        <div class="card-body">
+            {% for question in questions %}
+            <div class="mb-4">
+                <p class="fw-bold">{{ question.id }}. {{ question.text }}</p>
+                {% for option in question.options %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" 
+                           name="q_{{ question.id }}" 
+                           id="q_{{ question.id }}_{{ loop.index }}"
+                           value="{{ option }}" required>
+                    <label class="form-check-label" for="q_{{ question.id }}_{{ loop.index }}">
+                        {{ option }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="text-center mb-5">
+        <button type="submit" class="btn btn-primary btn-lg">Submit Assessment</button>
+    </div>
+</form>
+{% endblock %}

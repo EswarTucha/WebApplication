@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4 mb-4">Assessment Results</h1>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="h4 mb-3">Your Score: {{ score }}/{{ total }}</h2>
+            <p class="lead mb-4">Percentage: {{ "%.1f"|format(percentage) }}%</p>
+            
+            {% if passed %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Congratulations!</h4>
+                <p>You passed the assessment!</p>
+            </div>
+            {% else %}
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">Try Again Later</h4>
+                <p>Keep practicing to improve your score.</p>
+            </div>
+            {% endif %}
+            
+            <!-- <a href="{{ url_for('index') }}" class="btn btn-primary">Close the Window</a> -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="window.location.href='about:blank'" style="
+                    background-color: #dc3545;
+                    color: white;
+                    padding: 12px 24px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    transition: background-color 0.3s;
+                ">Close Quiz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="results-container">
+    <!-- Existing results content -->
+    
+    <div class="answers-section" style="margin-top: 30px; padding: 20px;">
+        <h3 style="color: #1a73e8; text-align: center; margin-bottom: 20px;">Review All Questions</h3>
+        <div style="max-width: 800px; margin: 0 auto;">
+            {% for question in questions %}
+            <div style="
+                background-color: white;
+                padding: 20px;
+                margin: 15px 0;
+                border-radius: 8px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            ">
+                <p style="font-weight: bold; color: #333; font-size: 16px;">
+                    Question {{ question.id }}: {{ question.text }}
+                </p>
+                <p style="color: #28a745; margin-top: 10px; font-size: 15px;">
+                    Correct Answer: {{ question.correct }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
